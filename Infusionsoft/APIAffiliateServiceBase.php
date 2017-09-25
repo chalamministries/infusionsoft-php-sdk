@@ -4,8 +4,8 @@ class Infusionsoft_APIAffiliateServiceBase extends Infusionsoft_Service{
     public static function affPayouts($affiliateId, $filterStartDate, $filterEndDate, Infusionsoft_App $app = null){
         $params = array(
             (int) $affiliateId, 
-            $filterStartDate, 
-            $filterEndDate
+            parent::apiDate($filterStartDate), 
+            parent::apiDate($filterEndDate)
         );
 
         return parent::send($app, "APIAffiliateService.affPayouts", $params);
@@ -14,8 +14,8 @@ class Infusionsoft_APIAffiliateServiceBase extends Infusionsoft_Service{
     public static function affCommissions($affiliateId, $filterStartDate, $filterEndDate, Infusionsoft_App $app = null){
         $params = array(
             (int) $affiliateId, 
-            $filterStartDate, 
-            $filterEndDate
+            parent::apiDate($filterStartDate), 
+            parent::apiDate($filterEndDate)
         );
 
         return parent::send($app, "APIAffiliateService.affCommissions", $params, null, true);
@@ -24,8 +24,8 @@ class Infusionsoft_APIAffiliateServiceBase extends Infusionsoft_Service{
     public static function affClawbacks($affiliateId, $filterStartDate, $filterEndDate, Infusionsoft_App $app = null){
         $params = array(
             (int) $affiliateId, 
-            $filterStartDate, 
-            $filterEndDate
+            parent::apiDate($filterStartDate), 
+            parent::apiDate($filterEndDate)
         );
 
         return parent::send($app, "APIAffiliateService.affClawbacks", $params);
@@ -34,8 +34,8 @@ class Infusionsoft_APIAffiliateServiceBase extends Infusionsoft_Service{
     public static function affSummary($affiliateIds, $filterStartDate, $filterEndDate, Infusionsoft_App $app = null){
         $params = array(
             $affiliateIds, 
-            $filterStartDate, 
-            $filterEndDate
+            parent::apiDate($filterStartDate), 
+            parent::apiDate($filterEndDate)
         );
 
         return parent::send($app, "APIAffiliateService.affSummary", $params);
@@ -58,7 +58,7 @@ class Infusionsoft_APIAffiliateServiceBase extends Infusionsoft_Service{
             $averageTime
         );
 
-        return parent::send($app, "AffiliateService.updatePhoneStats", $params);
+        return parent::send($app, "APIAffiliateService.updatePhoneStats", $params);
     }
 
     public static function getRedirectLinksForAffiliate($affiliateId, Infusionsoft_App $app = null){
@@ -66,9 +66,7 @@ class Infusionsoft_APIAffiliateServiceBase extends Infusionsoft_Service{
             (int) $affiliateId
         );
 
-        return parent::send($app, "AffiliateService.getRedirectLinksForAffiliate", $params);
+        return parent::send($app, "APIAffiliateService.getRedirectLinksForAffiliate", $params);
     }
 
-
-    
 }
