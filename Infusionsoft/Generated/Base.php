@@ -142,4 +142,11 @@ class Infusionsoft_Generated_Base
     public function addRestrictedFields(){
 
     }
+    
+    public function accessProtected($obj, $prop) {
+	  $reflection = new ReflectionClass($obj);
+	  $property = $reflection->getProperty($prop);
+	  $property->setAccessible(true);
+	  return $property->getValue($obj);
+	}
 }
